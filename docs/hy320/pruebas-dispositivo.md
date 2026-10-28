@@ -21,3 +21,5 @@ La muestra confirma que varias fuentes sí reproducen en este dispositivo, pero 
 Comparar un reproductor externo solo tiene sentido después de obtener un enlace multimedia. No resuelve una ficha sin episodios ni «ningún enlace encontrado». MX Player está instalado, pero no se cambió el reproductor predeterminado ni se declara una prueba externa completada.
 
 Para las mejoras futuras de la app se preparó el código original en `cloudstream-estudio`, rama `estudio/hy300-mejoras`, con revisión y prioridades en `REVISION-HY300.md`. No se publicó ninguna rama ni contribución.
+
+Actualización de la revisión HY320: en arranque frío, Breaking Bad/SeriesMetro mostró7 episodios y T1:E1 sin instalar cambios. El resultado anterior de ficha vacía queda como fallo intermitente documentado; no como ausencia permanente de episodios.

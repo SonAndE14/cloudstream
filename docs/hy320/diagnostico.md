@@ -39,3 +39,7 @@ Escala1–5: impacto y confianza mayores son mejores; esfuerzo mayor significa m
 Repetir Breaking Bad en arranque frío y comparar cantidades de temporadas y episodios con las peticiones directas; registrar fase, duración y código HTTP, sin guardar enlaces firmados ni cookies. Medir búsqueda, ficha, extracción, primer byte de vídeo y primer fotograma como tiempos diferentes. La captura de logs debe ser opt-in y exportable por el usuario.
 
 Comparar reproductores solo con el mismo enlace vigente y sus mismas cabeceras, subtítulos y punto de inicio. Un vídeo que falla únicamente en un motor justifica investigar decodificación/contenedor; un403 en ambos apunta a la petición o al enlace. No usar cambio de motor para ocultar fallos anteriores a la reproducción.
+
+## Repetición en frío durante esta revisión
+
+Sin modificar la APK ni la extensión, se cerró el proceso de CloudStream y se abrió de nuevo la ficha de Breaking Bad en SeriesMetro. La carga terminó mostrando7 episodios y el botón T1:E1. Antes la misma ficha había aparecido sin episodios. Por tanto, el fallo observado es intermitente; la fuente no estaba permanentemente sin episodios. La nueva prueba refuerza investigar estado/caché, cancelación y resultados parciales, pero no demuestra cuál es la causa. No se vaciaron los datos de la app ni se borraron cuentas o preferencias.
