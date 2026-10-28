@@ -43,3 +43,5 @@ Comparar reproductores solo con el mismo enlace vigente y sus mismas cabeceras, 
 ## Repetición en frío durante esta revisión
 
 Sin modificar la APK ni la extensión, se cerró el proceso de CloudStream y se abrió de nuevo la ficha de Breaking Bad en SeriesMetro. La carga terminó mostrando7 episodios y el botón T1:E1. Antes la misma ficha había aparecido sin episodios. Por tanto, el fallo observado es intermitente; la fuente no estaba permanentemente sin episodios. La nueva prueba refuerza investigar estado/caché, cancelación y resultados parciales, pero no demuestra cuál es la causa. No se vaciaron los datos de la app ni se borraron cuentas o preferencias.
+
+La repetición también llegó a vídeo real: Breaking Bad/SeriesMetro/T1:E1, PLAYING state3, posición25528ms y búfer80084ms; segunda lectura posición55560ms, búfer110131ms, velocidad1.0 y sin error. Es una prueba adicional de serie, no solo de película/anime. No supone que se haya corregido definitivamente el fallo intermitente.

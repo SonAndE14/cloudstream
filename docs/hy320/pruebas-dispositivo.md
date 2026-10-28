@@ -23,3 +23,5 @@ Comparar un reproductor externo solo tiene sentido después de obtener un enlace
 Para las mejoras futuras de la app se preparó el código original en `cloudstream-estudio`, rama `estudio/hy300-mejoras`, con revisión y prioridades en `REVISION-HY300.md`. No se publicó ninguna rama ni contribución.
 
 Actualización de la revisión HY320: en arranque frío, Breaking Bad/SeriesMetro mostró7 episodios y T1:E1 sin instalar cambios. El resultado anterior de ficha vacía queda como fallo intermitente documentado; no como ausencia permanente de episodios.
+
+Reproducción posterior: Breaking Bad T1:E1 en SeriesMetro sí reprodujo tras ese arranque frío. PLAYING con avance de25,5 a55,6s y búfer de80 a110s. Sin modificación de la APK ni del proveedor.
