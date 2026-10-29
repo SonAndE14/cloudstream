@@ -114,6 +114,51 @@ object SettingsGeneralScreen : SearchableSettings {
         }.sortedBy { fromTagToLanguageName(it) ?: it }
 
         return persistentListOf(
+            Preference.PreferenceGroup(
+                title = stringResource(R.string.device_compatibility_title),
+                preferenceItems = persistentListOf(
+                    Preference.PreferenceItem.TextPreference(
+                        title = stringResource(R.string.local_share_title),
+                        subtitle = stringResource(R.string.local_share_description),
+                        onClick = { context.startActivity(Intent(context, com.lagradost.cloudstream3.syncproviders.local.LocalShareActivity::class.java)) }
+                    ),
+                    Preference.PreferenceItem.SwitchPreference(
+                        preference = settings.general.preferLocalDownloads,
+                        title = stringResource(R.string.prefer_local_downloads_title),
+                        subtitle = stringResource(R.string.prefer_local_downloads_summary),
+                    ),
+                    Preference.PreferenceItem.ListPreference(
+                        preference = settings.general.imageDecodingMode,
+                        title = stringResource(R.string.image_decoding_title),
+                        entries = mapOf("auto" to stringResource(R.string.image_decoding_automatic), "software" to stringResource(R.string.image_decoding_software)),
+                    ),
+                    Preference.PreferenceItem.ListPreference(
+                        preference = settings.general.homeCardScale,
+                        title = stringResource(R.string.home_card_scale_title),
+                        entries = mapOf("100" to "100%", "125" to "125%", "150" to "150%"),
+                    ),
+                    Preference.PreferenceItem.ListPreference(
+                        preference = settings.general.homePreviewCount,
+                        title = stringResource(R.string.home_preview_count_title),
+                        entries = mapOf("1" to "1", "3" to "3", "5" to "5"),
+                    ),
+                    Preference.PreferenceItem.ListPreference(
+                        preference = settings.general.recommendationCount,
+                        title = stringResource(R.string.recommendation_count_title),
+                        entries = mapOf("6" to "6", "12" to "12"),
+                    ),
+                    Preference.PreferenceItem.SwitchPreference(
+                        preference = settings.general.restoreNavigation,
+                        title = stringResource(R.string.restore_navigation_title),
+                        subtitle = stringResource(R.string.restore_navigation_summary),
+                    ),
+                    Preference.PreferenceItem.SwitchPreference(
+                        preference = settings.general.autoHideNavigationRail,
+                        title = stringResource(R.string.auto_hide_rail_title),
+                        subtitle = stringResource(R.string.auto_hide_rail_summary),
+                    ),
+                ),
+            ),
             Preference.PreferenceGroup(title = stringResource(R.string.extension_language), preferenceItems = persistentListOf(
                 Preference.PreferenceItem.ListPreference(
                     preference = settings.general.locale,

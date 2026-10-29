@@ -84,11 +84,12 @@ object SearchResultBuilder {
         val showTitle = showCache[cardText?.context?.getString(R.string.show_title_key)] ?: false
         val showEpisodeText = showCache[cardText?.context?.getString(R.string.show_episode_text_key)] ?: false
         val showHd = showCache[textQuality?.context?.getString(R.string.show_hd_key)] ?: false
-        val showRatingView =
-            showCache[textQuality?.context?.getString(R.string.show_rating_key)] ?: false
+        val showRatingView = showCache[itemView.context.getString(R.string.show_rating_key)]
+            ?: androidx.preference.PreferenceManager.getDefaultSharedPreferences(itemView.context)
+                .getBoolean(itemView.context.getString(R.string.show_rating_key), true)
         if (card is SyncAPI.LibraryItem) {
-            val ratingText = card.personalRating?.toStringNull(0.1, 10, 1)
-            val showRating = !ratingText.isNullOrBlank()
+            val ratingText = (card.personalRating ?: card.score)?.toStringNull(0.1, 10, 1)
+            val showRating = showRatingView && !ratingText.isNullOrBlank()
             rating?.isVisible = showRating
             if (showRating) {
                 rating?.text = ratingText

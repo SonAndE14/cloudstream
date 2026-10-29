@@ -139,6 +139,7 @@ import com.lagradost.cloudstream3.utils.newExtractorLink
 import com.lagradost.cloudstream3.utils.txt
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.coroutineScope
@@ -1565,7 +1566,7 @@ class ResultViewModel2 : ViewModel() {
                     activity?.navigate(
                         R.id.global_to_navigation_player,
                         GeneratorPlayer.newInstance(
-                            generator, index,list
+                            com.lagradost.cloudstream3.ui.player.LocalFirstGenerator(generator), index,list
                         )
                     )
                 }
@@ -2410,6 +2411,12 @@ class ResultViewModel2 : ViewModel() {
 
     private fun resume(): ResumeWatchingStatus? {
         val correctId = currentId ?: return null
+        currentResponse?.let { response ->
+            com.lagradost.cloudstream3.syncproviders.local.PendingWatchTransfer.apply(
+                response.apiName, response.url, correctId, response.isMovie(),
+                currentEpisodes.filter { preferDubStatus == null || it.key.dubStatus == preferDubStatus }.values.flatten()
+            )
+        }
         val resume = getLastWatched(correctId)
         val resumeParentId = resume?.parentId
         if (resumeParentId != correctId) return null // is null or smth went wrong with getLastWatched
@@ -2503,8 +2510,25 @@ class ResultViewModel2 : ViewModel() {
 
 
     // this instantly updates the metadata on the page
+    private var recommendationJob: Job? = null
+    private var recommendationKey: String? = null
+
     private fun postPage(loadResponse: LoadResponse, apiRepository: APIRepository) {
-        _recommendations.postValue(loadResponse.recommendations ?: emptyList())
+        val sources = context?.let(com.lagradost.cloudstream3.ui.home.MultipleHomeSources::active).orEmpty()
+        val limit = context?.let { androidx.preference.PreferenceManager.getDefaultSharedPreferences(it)
+            .getString("recommendation_count", "12")?.toIntOrNull()?.coerceIn(6, 12) } ?: 12
+        val key = loadResponse.apiName + loadResponse.url + sources.joinToString { it.name } + limit
+        if (key != recommendationKey) {
+            recommendationJob?.cancel()
+            recommendationKey = key
+            _recommendations.postValue(loadResponse.recommendations.orEmpty()
+                .filter { sources.isEmpty() || sources.any { api -> api.name == it.apiName } }.take(limit))
+            recommendationJob = viewModelScope.launchSafe(Dispatchers.IO) {
+                ProviderRecommendations.collect(loadResponse, sources, limit) { recommendations ->
+                    if (recommendationKey == key) _recommendations.postValue(recommendations)
+                }
+            }
+        }
         _page.postValue(Resource.Success(loadResponse.toResultData(apiRepository)))
     }
 

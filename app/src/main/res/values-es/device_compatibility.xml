@@ -1,0 +1,21 @@
+<resources>
+    <string name="recommendations_all_sources">Todas las fuentes seleccionadas</string>
+    <string name="recommendation_count_title">Recomendaciones por título</string>
+    <string name="auto_hide_rail_title">Ocultar automáticamente el menú lateral en TV</string>
+    <string name="auto_hide_rail_summary">Se oculta al recorrer carátulas. Vuelve desde el primer elemento o pulsa Opciones para mostrarlo.</string>
+    <string name="playback_availability_unknown">Esta fuente todavía no ha proporcionado contenido reproducible. Puede no estar disponible o no haberse estrenado. Pulsa para reintentar.</string>
+    <string name="home_multiple_sources">Seleccionar varias fuentes</string>
+    <string name="home_all_sources">Todas las fuentes compatibles</string>
+    <string name="prefer_local_downloads_title">Reproducir primero las descargas</string>
+    <string name="prefer_local_downloads_summary">Usa una descarga completa y accesible antes de solicitar enlaces. Desactívalo para priorizar el streaming.</string>
+    <string name="device_compatibility_title">Compatibilidad del dispositivo y navegación</string>
+    <string name="image_decoding_title">Decodificación de imágenes</string>
+    <string name="image_decoding_automatic">Automática</string>
+    <string name="image_decoding_software">Compatibilidad por software</string>
+    <string name="image_decoding_summary">Reintenta por software los bitmaps de hardware incompatibles. El modo software puede ayudar en dispositivos que no muestran imágenes.</string>
+    <string name="home_card_scale_title">Tamaño de tarjetas de Inicio</string>
+    <string name="home_preview_count_title">Títulos destacados</string>
+    <string name="restore_navigation_title">Restaurar la pantalla anterior</string>
+    <string name="restore_navigation_summary">Conserva la pantalla anterior al abrir la app y cambiar de sección. Desactivado: abre Inicio desde el lanzador y la raíz de cada sección.</string>
+    <string-array name="home_card_scale_entries"><item>Original (100%)</item><item>Grandes (125%)</item><item>Más grandes (150%)</item></string-array>
+</resources>

@@ -189,6 +189,13 @@ class PlayerPreferences(preferences: PreferenceStore) {
 }
 
 class GeneralPreferences(preferences: PreferenceStore) {
+    val imageDecodingMode = preferences.getString("image_decoding_mode", "auto")
+    val homeCardScale = preferences.getString("home_card_scale", "125")
+    val restoreNavigation = preferences.getBoolean("restore_navigation", false)
+    val autoHideNavigationRail = preferences.getBoolean("auto_hide_navigation_rail", true)
+    val homePreviewCount = preferences.getString("home_preview_count", "5")
+    val recommendationCount = preferences.getString("recommendation_count", "12")
+    val preferLocalDownloads = preferences.getBoolean("prefer_local_downloads", true)
     val locale = preferences.getString("app_locale", "")
     val bananas = preferences.getInt("benene_count", 0)
     val parallelDownloads = preferences.getInt("download_parallel_key", 3)

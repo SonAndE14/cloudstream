@@ -492,6 +492,7 @@ open class ResultFragmentPhone : BaseFragment<FragmentResultSwipeBinding>(
 
         resultBinding?.apply {
             resultReloadConnectionerror.setOnClickListener {
+                com.lagradost.cloudstream3.ui.APIRepository.invalidateLoadResponse(storedData.apiName, storedData.url)
                 viewModel.load(
                     activity,
                     storedData.url,
@@ -989,6 +990,8 @@ open class ResultFragmentPhone : BaseFragment<FragmentResultSwipeBinding>(
                     populateChips(resultTag, d.tags)
 
                     resultComingSoon.isVisible = d.comingSoon
+                    resultComingSoon.setText(R.string.playback_availability_unknown)
+                    resultComingSoon.setOnClickListener { resultReloadConnectionerror.performClick() }
                     resultDataHolder.isGone = d.comingSoon
 
                     val prefs =
@@ -1449,13 +1452,13 @@ open class ResultFragmentPhone : BaseFragment<FragmentResultSwipeBinding>(
 
     private fun setRecommendations(rec: List<SearchResponse>?, validApiName: String?) {
         val isInvalid = rec.isNullOrEmpty()
-        val matchAgainst = validApiName ?: rec?.firstOrNull()?.apiName
+        val matchAgainst = validApiName
 
         recommendationBinding?.apply {
             root.isGone = isInvalid
             root.post {
                 rec?.let { list ->
-                    (resultRecommendationsList.adapter as? SearchAdapter)?.submitList(list.filter { it.apiName == matchAgainst })
+                    (resultRecommendationsList.adapter as? SearchAdapter)?.submitList(list.filter { matchAgainst == null || it.apiName == matchAgainst }.take(12))
                 }
             }
         }
@@ -1483,14 +1486,14 @@ open class ResultFragmentPhone : BaseFragment<FragmentResultSwipeBinding>(
                 // very dirty selection
                 recommendationBinding?.resultRecommendationsFilterButton?.apply {
                     isVisible = apiNames.size > 1
-                    text = matchAgainst
+                    text = matchAgainst ?: getString(R.string.recommendations_all_sources)
                     setOnClickListener { _ ->
                         activity?.showBottomDialog(
-                            apiNames,
-                            apiNames.indexOf(matchAgainst),
+                            listOf(getString(R.string.recommendations_all_sources)) + apiNames,
+                            if (matchAgainst == null) 0 else apiNames.indexOf(matchAgainst) + 1,
                             getString(R.string.home_change_provider_img_des), false, {}
                         ) {
-                            setRecommendations(rec, apiNames[it])
+                            setRecommendations(rec, if (it == 0) null else apiNames[it - 1])
                         }
                     }
                 }
