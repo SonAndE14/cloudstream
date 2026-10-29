@@ -1,6 +1,6 @@
 # Implementación en curso — CloudStream independiente
 
-Rama: features/device-compatibility-and-home. El launcher queda fuera de este trabajo. No instalar ni sustituir CloudStream en el proyector sin petición del propietario. Sin PR ni publicación de cambios por ahora.
+Rama: features/device-compatibility-and-home. El launcher queda fuera de este trabajo. No instalar ni sustituir CloudStream en el proyector sin petición del propietario. El propietario autorizó publicar en el fork y abrir una contribución el 28/10/2026. El trabajo completo se conserva en el fork; las propuestas a upstream se preparan con alcance acotado.
 
 ## Peticiones que deben conservarse
 
@@ -28,7 +28,7 @@ Las recomendaciones parten de las nativas del título, consultan coincidencias d
 
 El decodificador reintenta en software los errores identificados de bitmap hardware; no trata errores HTTP, cancelaciones ni falta de memoria como un problema de bitmap. La imagen alternativa evita tarjetas vacías, pero no recupera una portada que el proveedor no publica o bloquea. No se han añadido servicios externos para inventar notas o imágenes.
 
-La selección de visibilidad de puntuaciones usa el contexto de la tarjeta, sin depender de que exista una etiqueta de calidad en esa presentación. Las bibliotecas permiten nota personal o nota pública cuando esté disponible. Esto corrige una ruta potencial de ocultación; no demuestra por sí solo que todas las diferencias observadas entre Auto y TV tengan esa causa.
+Se conserva la lógica original de puntuaciones. La comunidad pidió explícitamente hacerlas opcionales (#1779), y no hay una reproducción controlada de un defecto entre Auto y TV. Se retiró el ajuste especulativo de notas antes de publicar; una puntuación ausente del proveedor no se sustituye ni se interpreta como fallo confirmado.
 
 La ficha transitoriamente no reproducible tiene una caché más corta y el reintento invalida realmente su caché antes de cargarla otra vez. El texto distingue disponibilidad desconocida de estreno futuro. Esto no repara automáticamente extractores o servidores externos caídos y no garantiza reproducción de cada fuente.
 
@@ -50,4 +50,4 @@ Los destacados también tienen concurrencia de dos, ocho segundos por ficha y di
 
 Android SDK37 y build-tools36 se obtuvieron mediante el Gradle original, con licencias del SDK ya aceptadas. Ninguna APK nueva está instalada en el dispositivo. Quedan pendientes las comprobaciones visuales de mando, notas y foco en TV, reproducción real de varios proveedores, permisos de red en Android37 y transferencia entre dos Android físicos.
 
-Antes de colaborar con upstream: revisar cada bloque en cambios pequeños, probar estos escenarios reales, respetar AI-POLICY.md y explicar el uso de asistencia de IA. No se ha abierto ningún PR ni enviado estos cambios al repositorio original.
+Antes de colaborar con upstream: revisar cada bloque en cambios pequeños, probar estos escenarios reales, respetar AI-POLICY.md y explicar el uso de asistencia de IA. La revisión de comunidad y el alcance de la primera propuesta se describen en COMMUNITY-REVIEW.md.
