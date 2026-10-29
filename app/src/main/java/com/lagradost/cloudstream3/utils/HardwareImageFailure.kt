@@ -6,7 +6,7 @@ internal object HardwareImageFailure {
         var current: Throwable? = error
         var recoverable = false
         while (current != null && visited.add(current)) {
-            if (current is OutOfMemoryError || current is java.util.concurrent.CancellationException) return false
+            if (current is Error || current is java.util.concurrent.CancellationException) return false
             val message = current.message.orEmpty().lowercase()
             if (("hardware" in message && "bitmap" in message) ||
                 "ahardwarebuffer" in message ||
