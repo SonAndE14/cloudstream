@@ -1211,7 +1211,7 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener, BiometricCa
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        resetHomeOnResume = savedInstanceState != null && shouldResetLauncherEntry(intent)
+        resetHomeOnResume = savedInstanceState != null && lastNonConfigurationInstance == null && shouldResetLauncherEntry(intent)
         app.initClient(this, ignoreSSL = false)
         @OptIn(UnsafeSSL::class)
         insecureApp.initClient(this, ignoreSSL = true)

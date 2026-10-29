@@ -2,6 +2,8 @@
 
 Rama: features/device-compatibility-and-home. El launcher queda fuera de este trabajo. No instalar ni sustituir CloudStream en el proyector sin petición del propietario. El propietario autorizó publicar en el fork y abrir una contribución el 28/10/2026. El trabajo completo se conserva en el fork; las propuestas a upstream se preparan con alcance acotado.
 
+Todas las mejoras implementadas están enviadas en nueve PR: [inventario completo](UPSTREAM-SUBMISSIONS.md). La comprobación final de la rama completa pasó 45 pruebas JVM, compilación de APK y ABI tras incorporar el resguardo de recreación de navegación. No se esperó aprobación y los PR permanecen abiertos.
+
 ## Peticiones que deben conservarse
 
 - Compatibilidad de imágenes automática ante fallos de bitmap hardware y opción software, sin depender solo del nombre del dispositivo.

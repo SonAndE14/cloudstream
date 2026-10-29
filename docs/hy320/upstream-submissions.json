@@ -1,0 +1,65 @@
+[
+  {
+    "feature": "runtime",
+    "branch": "fix/hardware-bitmap-runtime-fallback",
+    "url": "https://github.com/recloudstream/cloudstream/pull/3287",
+    "title": "Runtime hardware bitmap recovery",
+    "tests": 18
+  },
+  {
+    "feature": "observer",
+    "branch": "fix/provider-cache-observer-lifetime",
+    "url": "https://github.com/recloudstream/cloudstream/pull/3288",
+    "title": "Shared provider-cache observer lifetime",
+    "tests": 10
+  },
+  {
+    "feature": "availability",
+    "branch": "contrib/availability-cache-retry",
+    "title": "fix: refresh transient availability metadata on explicit retry",
+    "url": "https://github.com/recloudstream/cloudstream/pull/3291",
+    "tests": 10
+  },
+  {
+    "feature": "catalogues",
+    "branch": "contrib/multiple-home-sources",
+    "title": "feat: browse selected home sources with bounded recommendations",
+    "url": "https://github.com/recloudstream/cloudstream/pull/3292",
+    "tests": 15
+  },
+  {
+    "feature": "downloads",
+    "branch": "contrib/local-first-playback",
+    "title": "feat: prefer complete local downloads before streaming extraction",
+    "url": "https://github.com/recloudstream/cloudstream/pull/3290",
+    "tests": 12
+  },
+  {
+    "feature": "handoff",
+    "branch": "contrib/manual-local-handoff",
+    "title": "feat: prototype manual local title and progress handoff",
+    "url": "https://github.com/recloudstream/cloudstream/pull/3295",
+    "tests": 18
+  },
+  {
+    "feature": "images",
+    "branch": "contrib/image-decoding-options",
+    "title": "feat: add software image decoding option and poster fallbacks",
+    "url": "https://github.com/recloudstream/cloudstream/pull/3289",
+    "tests": 8
+  },
+  {
+    "feature": "navigation",
+    "branch": "contrib/tv-navigation-preferences",
+    "title": "feat: add optional TV rail hiding and navigation restoration",
+    "url": "https://github.com/recloudstream/cloudstream/pull/3294",
+    "tests": 10
+  },
+  {
+    "feature": "presentation",
+    "branch": "contrib/home-card-presentation",
+    "title": "feat: configure home card scale and featured title count",
+    "url": "https://github.com/recloudstream/cloudstream/pull/3293",
+    "tests": 8
+  }
+]

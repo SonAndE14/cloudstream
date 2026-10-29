@@ -8,7 +8,7 @@ Este clon es independiente del estudio anterior. `origin` apunta al fork del usu
 
 ## Publicación y optimización
 
-La rama completa está publicada en el fork; master coincide con el original (5024ace2922a148d38df2a816b483b529789cf58, comprobado por API). Se abrieron las contribuciones independientes [PR3287](https://github.com/recloudstream/cloudstream/pull/3287) y [PR3288](https://github.com/recloudstream/cloudstream/pull/3288). Todas las demás mejoras permanecen en esta rama y están inventariadas para propuestas separadas en [UPSTREAM-PLAN.md](UPSTREAM-PLAN.md). La [auditoría de carga](PERFORMANCE-AUDIT.md) diferencia optimizaciones existentes, correcciones comprobables y mediciones pendientes.
+Todas las mejoras implementadas fueron enviadas al original en nueve PR. La [lista completa verificada](UPSTREAM-SUBMISSIONS.md) enlaza cada propuesta y sus pruebas; no queda ninguna función implementada pendiente de envío. Las limitaciones y pruebas físicas pendientes se indican en cada PR. master sigue siendo un espejo del original y la rama completa conserva todas las funciones.
 
 ## Estado actual
 
