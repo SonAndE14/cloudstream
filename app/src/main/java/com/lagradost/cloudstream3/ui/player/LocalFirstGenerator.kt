@@ -16,7 +16,7 @@ import java.io.IOException
 
 class LocalFirstGenerator(private val remote: RepoLinkGenerator) : VideoGenerator<ResultEpisode>(remote.videos) {
     override val hasCache = remote.hasCache
-    override val canSkipLoading = false
+    override val canSkipLoading = remote.canSkipLoading
     override fun getId(index: Int) = remote.getId(index)
 
     override suspend fun generateLinks(
