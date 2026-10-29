@@ -1,0 +1,62 @@
+[
+  {
+    "Suite": "com.lagradost.cloudstream3.SubtitleLanguageTagTest",
+    "Tests": 8,
+    "Failures": 0,
+    "Errors": 0
+  },
+  {
+    "Suite": "com.lagradost.cloudstream3.syncproviders.local.LocalPairingTransportTest",
+    "Tests": 5,
+    "Failures": 0,
+    "Errors": 0
+  },
+  {
+    "Suite": "com.lagradost.cloudstream3.syncproviders.local.SharedWatchTransferTest",
+    "Tests": 5,
+    "Failures": 0,
+    "Errors": 0
+  },
+  {
+    "Suite": "com.lagradost.cloudstream3.ui.APIRepositoryObserverTest",
+    "Tests": 2,
+    "Failures": 0,
+    "Errors": 0
+  },
+  {
+    "Suite": "com.lagradost.cloudstream3.ui.home.CombinedHomeApiTest",
+    "Tests": 4,
+    "Failures": 0,
+    "Errors": 0
+  },
+  {
+    "Suite": "com.lagradost.cloudstream3.ui.LoadResponseCachePolicyTest",
+    "Tests": 2,
+    "Failures": 0,
+    "Errors": 0
+  },
+  {
+    "Suite": "com.lagradost.cloudstream3.ui.RailNavigationPolicyTest",
+    "Tests": 2,
+    "Failures": 0,
+    "Errors": 0
+  },
+  {
+    "Suite": "com.lagradost.cloudstream3.ui.result.ProviderRecommendationsTest",
+    "Tests": 3,
+    "Failures": 0,
+    "Errors": 0
+  },
+  {
+    "Suite": "com.lagradost.cloudstream3.utils.downloader.LocalDownloadPolicyTest",
+    "Tests": 4,
+    "Failures": 0,
+    "Errors": 0
+  },
+  {
+    "Suite": "com.lagradost.cloudstream3.utils.HardwareImageFailureTest",
+    "Tests": 10,
+    "Failures": 0,
+    "Errors": 0
+  }
+]

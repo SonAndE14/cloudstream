@@ -6,6 +6,10 @@ Base: `5024ace2922a148d38df2a816b483b529789cf58`, rama upstream `master`. El fir
 
 Este clon es independiente del estudio anterior. `origin` apunta al fork del usuario; `upstream` permite obtener el original y tiene bloqueada la URL de push. La rama `master` se conserva como base, y `hy320/diagnostico-y-diseno` contiene solo documentos. Ese diagnóstico inicial no modificaba la aplicación. Ahora la rama features/device-compatibility-and-home contiene las mejoras y una APK compilada de prueba; no se ha instalado en el dispositivo. La extensión de imágenes existente sigue separada del launcher. Los documentos históricos de revisión pueden mencionar HY300 por el nombre inicial del proyecto.
 
+## Publicación y optimización
+
+La rama completa está publicada en el fork; master coincide con el original (5024ace2922a148d38df2a816b483b529789cf58, comprobado por API). Se abrieron las contribuciones independientes [PR3287](https://github.com/recloudstream/cloudstream/pull/3287) y [PR3288](https://github.com/recloudstream/cloudstream/pull/3288). Todas las demás mejoras permanecen en esta rama y están inventariadas para propuestas separadas en [UPSTREAM-PLAN.md](UPSTREAM-PLAN.md). La [auditoría de carga](PERFORMANCE-AUDIT.md) diferencia optimizaciones existentes, correcciones comprobables y mediciones pendientes.
+
 ## Estado actual
 
 Consultar [implementación y pruebas](IMPLEMENTACION.md), [revisión de la comunidad](COMMUNITY-REVIEW.md) y [pruebas manuales pendientes](PRUEBAS-MANUALES.md). Los documentos de diagnóstico siguientes son históricos y distinguen explícitamente hipótesis de resultados.
