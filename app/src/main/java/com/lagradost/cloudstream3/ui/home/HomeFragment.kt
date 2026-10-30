@@ -399,10 +399,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             )
 
             builder.setContentView(binding.root)
-            binding.multipleSourcesBtt.setOnClickListener {
-                builder.dismissSafe()
-                MultipleHomeSources.show(this, selectedApiName, callback)
-            }
             builder.show()
             builder.let { dialog ->
                 val isMultiLang = getApiProviderLangSettings().let { set ->
@@ -410,7 +406,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 }
                 //dialog.window?.setGravity(Gravity.BOTTOM)
 
-                var currentApiName = selectedApiName
+                val chosen = (if (selectedApiName == CombinedHomeApi.NAME) {
+                    MultipleHomeSources.selected(this).map { it.name }
+                } else listOfNotNull(selectedApiName)).toMutableSet()
 
                 var currentValidApis: MutableList<MainAPI> = mutableListOf()
                 val preSelectedTypes = DataStoreHelper.homePreference.toMutableList()
@@ -420,9 +418,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 }
 
                 binding.applyBtt.setOnClickListener {
-                    if (currentApiName != selectedApiName) {
-                        currentApiName?.let(callback)
-                    }
+                    val providers = chosen.filter { it != noneApi.name && it != randomApi.name }.toSet()
+                    PreferenceManager.getDefaultSharedPreferences(this).edit()
+                        .putBoolean("home_all_sources", false)
+                        .putStringSet("home_selected_sources", providers)
+                        .apply()
+                    callback(when {
+                        randomApi.name in chosen -> randomApi.name
+                        providers.size == 1 -> providers.single()
+                        providers.isNotEmpty() -> CombinedHomeApi.NAME
+                        else -> noneApi.name
+                    })
                     dialog.dismissSafe()
                 }
 
@@ -471,15 +477,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                     }
                 }
                 listView?.adapter = arrayAdapter
-                listView?.choiceMode = AbsListView.CHOICE_MODE_SINGLE
+                listView?.choiceMode = AbsListView.CHOICE_MODE_MULTIPLE
 
                 listView?.setOnItemClickListener { _, _, i, _ ->
-                    if (currentValidApis.isNotEmpty()) {
-                        currentApiName = currentValidApis[i].name
-                        //to switch to apply simply remove this
-                        currentApiName.let(callback)
-                        dialog.dismissSafe()
+                    val name = currentValidApis.getOrNull(i)?.name ?: return@setOnItemClickListener
+                    if (name == noneApi.name || name == randomApi.name) {
+                        chosen.clear()
+                        chosen.add(name)
+                    } else {
+                        chosen.remove(noneApi.name)
+                        chosen.remove(randomApi.name)
+                        if (!chosen.add(name)) chosen.remove(name)
                     }
+                    listView.clearChoices()
+                    currentValidApis.forEachIndexed { index, api ->
+                        listView.setItemChecked(index, api.name in chosen)
+                    }
+                    arrayAdapter.notifyDataSetChanged()
                 }
 
                 fun updateList() {
@@ -522,9 +536,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                         val displayName = getDisplayName(it.name)
                         if (isMultiLang) "${getFlagFromIso(it.lang)?.plus(" ") ?: ""}$displayName" else displayName
                     }
-                    val index = currentValidApis.map { it.name }.indexOf(currentApiName)
-                    listView?.setItemChecked(index, true)
                     arrayAdapter.addAll(names)
+                    listView?.clearChoices()
+                    currentValidApis.forEachIndexed { index, api ->
+                        listView?.setItemChecked(index, api.name in chosen)
+                    }
                     arrayAdapter.notifyDataSetChanged()
                 }
                 // pin provider on hold

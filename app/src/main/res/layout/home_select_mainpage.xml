@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_rowWeight="1"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="120dp"
         android:clipToPadding="false"
         android:minHeight="0dp"
         android:nestedScrollingEnabled="true"
@@ -20,26 +19,21 @@
         android:nextFocusRight="@id/cancel_btt"
         android:requiresFadingEdge="vertical"
         tools:listitem="@layout/sort_bottom_single_provider_choice" />
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/multiple_sources_btt" style="@style/BlackButton"
-        android:layout_width="wrap_content" android:layout_height="48dp"
-        android:layout_gravity="top|center_horizontal" android:text="@string/home_multiple_sources" />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="120dp">
         <include layout="@layout/tvtypes_chips_scroll" android:id="@+id/tvtypes_chips_scroll" />
         <LinearLayout
             android:id="@+id/apply_btt_holder"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="-60dp"
+            android:layout_marginTop="0dp"
             android:layout_gravity="bottom"
             android:gravity="bottom|end"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/apply_btt"
